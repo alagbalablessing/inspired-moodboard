@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Inspired Moodboard V.1 — Install &amp; User Guide</title>
+<style>
+@font-face { font-family:"Bricolage"; src:url("bricolage.woff2") format("woff2-variations"); font-weight:200 800; font-stretch:75% 100%; }
+@page { size:A4; margin:0; }
+:root { --bg:#0E0E12; --panel:#16161C; --panel2:#1C1C24; --ink:#F4F4F7; --mut:#A3A3B1; --dim:#6F6F7D; --line:rgba(255,255,255,.09); --red:#E60023; --red2:#FF4D6D; --ok:#2FBF71; }
+* { box-sizing:border-box; }
+html, body { margin:0; background:var(--bg); }
+body { font-family:"Bricolage", system-ui, sans-serif; font-variation-settings:"opsz" 14; color:var(--ink); font-size:10.6pt; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.page { width:210mm; height:297mm; padding:17mm 16mm 20mm; position:relative; overflow:hidden; page-break-after:always; break-after:page;
+  background:radial-gradient(120mm 90mm at 100% 0%, rgba(230,0,35,.16), transparent 70%), var(--bg); }
+.page:last-child { page-break-after:auto; break-after:auto; }
+h1, h2, h3 { margin:0; font-variation-settings:"opsz" 96; letter-spacing:-.015em; }
+h2 { font-size:25pt; font-weight:800; line-height:1.05; margin:2mm 0 4mm; }
+h3 { font-size:12.5pt; font-weight:750; font-variation-settings:"opsz" 24; margin:0 0 1.5mm; }
+p { margin:0 0 3mm; color:#D9D9E1; }
+b, strong { color:var(--ink); font-weight:700; }
+.kicker { display:inline-flex; align-items:center; gap:2.2mm; font-size:8.6pt; font-weight:750; letter-spacing:.14em; text-transform:uppercase; color:var(--red2); }
+.kicker::before { content:""; width:2.4mm; height:2.4mm; border-radius:50%; background:var(--red); box-shadow:0 0 3mm var(--red); }
+.lead { font-size:12pt; color:#C9C9D3; max-width:150mm; margin-bottom:6mm; }
+.shot { display:block; width:100%; border-radius:3mm; border:1px solid rgba(255,255,255,.12); box-shadow:0 6mm 14mm -6mm rgba(0,0,0,.9); }
+.cap { font-size:8.6pt; color:var(--mut); margin:2mm 0 0; }
+.foot { position:absolute; left:16mm; right:16mm; bottom:9mm; display:flex; justify-content:space-between; font-size:8pt; color:var(--dim); }
+.foot b { color:var(--mut); font-weight:650; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:6mm; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:5mm; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:4mm; padding:5mm; position:relative; }
+.card::before { content:""; position:absolute; top:-1px; left:8mm; right:8mm; height:1px; background:linear-gradient(90deg,transparent,var(--red2),transparent); opacity:.7; }
+.card p:last-child { margin-bottom:0; }
+.steps { counter-reset:s; display:flex; flex-direction:column; gap:4mm; }
+.step { display:grid; grid-template-columns:9mm 1fr; gap:4mm; align-items:start; }
+.step::before { counter-increment:s; content:counter(s); width:9mm; height:9mm; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:11pt;
+  background:linear-gradient(135deg,var(--red),var(--red2)); color:#fff; box-shadow:0 2mm 5mm -1mm rgba(230,0,35,.6); }
+.step h3 { margin-top:1.2mm; }
+.step p { margin:0; }
+.note { border-left:2px solid var(--red2); background:rgba(230,0,35,.08); padding:3.5mm 4.5mm; border-radius:0 3mm 3mm 0; margin:4mm 0; font-size:9.8pt; color:#E6E6EC; }
+.note b { color:#fff; }
+.kbd { display:inline-block; min-width:5.5mm; padding:.4mm 1.8mm; border-radius:1.4mm; background:var(--panel2); border:1px solid rgba(255,255,255,.16); border-bottom-width:2px;
+  font-size:8.8pt; font-weight:700; color:#fff; text-align:center; white-space:nowrap; }
+.btn { display:inline-block; padding:.3mm 2.4mm; border-radius:1.6mm; font-weight:700; font-size:9.4pt; white-space:nowrap; background:var(--panel2); border:1px solid rgba(255,255,255,.14); color:#fff; }
+.btn.red { background:linear-gradient(135deg,var(--red),var(--red2)); border-color:transparent; }
+table { width:100%; border-collapse:collapse; font-size:9.8pt; }
+td { padding:2.6mm 3mm; border-bottom:1px solid var(--line); vertical-align:top; }
+td:first-child { white-space:nowrap; padding-right:5mm; color:#E6E6EC; }
+tr:last-child td { border-bottom:0; }
+.tl td:first-child { width:46%; white-space:normal; }
+ul.clean { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:2.2mm; }
+ul.clean li { padding-left:5mm; position:relative; color:#D9D9E1; }
+ul.clean li::before { content:""; position:absolute; left:0; top:2.1mm; width:1.8mm; height:1.8mm; border-radius:50%; background:var(--red2); }
+.yes li::before { background:var(--ok); }
+.no li::before { background:#5a5a66; }
+.pill { display:inline-block; padding:.6mm 2.6mm; border-radius:999px; font-size:8.2pt; font-weight:750; background:rgba(230,0,35,.16); color:#ffc2cd; border:1px solid rgba(255,77,109,.35); }
+
+/* annotated screenshot */
+.anno { position:relative; }
+.mark { position:absolute; width:7.5mm; height:7.5mm; margin:-3.75mm 0 0 -3.75mm; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:10pt; color:#fff;
+  background:linear-gradient(135deg,var(--red),var(--red2)); box-shadow:0 0 0 1.2mm rgba(14,14,18,.85), 0 2mm 6mm rgba(230,0,35,.7); }
+.legend { display:grid; grid-template-columns:1fr 1fr; gap:3.5mm 7mm; margin-top:6mm; }
+.legend div { display:grid; grid-template-columns:7.5mm 1fr; gap:3mm; align-items:start; font-size:9.8pt; color:#D9D9E1; }
+.legend i { font-style:normal; width:7.5mm; height:7.5mm; border-radius:50%; display:grid; place-items:center; font-weight:800; color:#fff; background:linear-gradient(135deg,var(--red),var(--red2)); }
+.legend b { display:block; }
+
+/* cover */
+.cover { padding:0; background:var(--bg); }
+.cover .wall { position:absolute; inset:0 0 auto 0; height:178mm; overflow:hidden; }
+.cover .wall img { width:100%; height:100%; object-fit:cover; object-position:center 35%; filter:saturate(1.05); }
+.cover .wall::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,14,18,.15) 0%, rgba(14,14,18,.35) 55%, var(--bg) 100%); }
+.cover .body { position:absolute; left:18mm; right:18mm; bottom:24mm; }
+.cover .logo { width:16mm; height:16mm; border-radius:4mm; margin-bottom:6mm; box-shadow:0 4mm 10mm -2mm rgba(230,0,35,.6); }
+.cover h1 { font-size:46pt; line-height:.98; font-weight:800; }
+.cover .v { display:inline-block; vertical-align:middle; margin-left:3mm; font-size:13pt; padding:1mm 3.4mm; border-radius:999px; background:linear-gradient(135deg,var(--red),var(--red2)); position:relative; top:-3mm; }
+.cover .sub { font-size:15pt; color:#D0D0D9; margin:5mm 0 9mm; max-width:140mm; line-height:1.35; }
+.cover .meta { display:flex; gap:3mm; flex-wrap:wrap; }
+.cover .meta span { font-size:9pt; color:#E6E6EC; padding:1.5mm 3.6mm; border-radius:999px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04); }
+
+.toc { display:grid; grid-template-columns:1fr; gap:0; margin-top:4mm; }
+.toc a { display:grid; grid-template-columns:12mm 1fr auto; align-items:baseline; padding:3.2mm 0; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:11pt; }
+.toc a span:first-child { color:var(--red2); font-weight:800; }
+.toc a span:last-child { color:var(--dim); font-size:9.5pt; }
+.phones { display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; }
+.phones img { width:100%; border-radius:4mm; border:1px solid rgba(255,255,255,.12); }
+</style>
+</head>
+<body>
+
+<!-- 1 · Cover -->
+<section class="page cover">
+  <div class="wall"><img src="jpg/cover-board.jpg" alt=""></div>
+  <div class="body">
+    <img class="logo" src="logo.png" alt="">
+    <h1>Inspired<br>Moodboard<span class="v">V.1</span></h1>
+    <p class="sub">Install &amp; user guide. Turn your Pinterest saves into a living moodboard that floats over Photoshop, Figma and Canva.</p>
+    <div class="meta"><span>Windows 10 &amp; 11</span><span>Free</span><span>Works offline</span><span>Plus the Android app</span></div>
+  </div>
+</section>
+
+<!-- 2 · Welcome + contents -->
+<section class="page">
+  <div class="kicker">Welcome</div>
+  <h2>What Inspired Moodboard does</h2>
+  <p class="lead">Inspired Moodboard is a desktop app for designers. It opens any folder of images, like the collections you save from Pinterest, and lays them out as one clean board you can keep beside your design work.</p>
+  <div class="grid3" style="margin-bottom:8mm">
+    <div class="card"><h3>See everything</h3><p>Every design in a folder on one board, in a tidy grid, sorted by colour, or with your favourites shown big.</p></div>
+    <div class="card"><h3>Design with it</h3><p>Keep the board on top of Photoshop, Figma or Canva, make it see-through, and drag pictures straight into your work.</p></div>
+    <div class="card"><h3>Stay organised</h3><p>Collections from the Inspired Pin Saver extension show up by themselves. New saves appear on the board as they arrive.</p></div>
+  </div>
+  <h3 style="margin-bottom:2mm">In this guide</h3>
+  <div class="toc">
+    <a><span>01</span><span>Before you install</span><span>3</span></a>
+    <a><span>02</span><span>Installing Inspired Moodboard</span><span>4</span></a>
+    <a><span>03</span><span>Opening your first board</span><span>5</span></a>
+    <a><span>04</span><span>A tour of the board</span><span>6</span></a>
+    <a><span>05</span><span>Four ways to arrange a board</span><span>7</span></a>
+    <a><span>06</span><span>Working with a design</span><span>8</span></a>
+    <a><span>07</span><span>Using it while you design</span><span>9</span></a>
+    <a><span>08</span><span>Shortcuts &amp; moving around</span><span>10</span></a>
+    <a><span>09</span><span>Uninstalling &amp; troubleshooting</span><span>11</span></a>
+    <a><span>10</span><span>Inspired on your phone</span><span>12</span></a>
+  </div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>2</span></div>
+</section>
+
+<!-- 3 · Before you install -->
+<section class="page">
+  <div class="kicker">01 · Before you install</div>
+  <h2>What you need</h2>
+  <p class="lead">Inspired Moodboard comes as one file, <b>Inspired Moodboard V.1 Setup.exe</b> (about 122&nbsp;MB). Everything the app needs is inside it, so installing needs no internet and nothing else to download.</p>
+  <div class="grid2">
+    <div class="card"><h3>Works on</h3>
+      <ul class="clean yes"><li><b>Windows 10 and Windows 11</b>, 64-bit (almost every laptop and desktop from the last 8 years).</li><li>No administrator password needed. It installs just for you.</li><li>About <b>350&nbsp;MB</b> of free space while installing (the app itself uses about 280&nbsp;MB).</li></ul></div>
+    <div class="card"><h3>Doesn't work on</h3>
+      <ul class="clean no"><li>Windows 7 or 8.</li><li>32-bit Windows. Check under <b>Settings → System → About → System type</b>.</li><li>Mac or Linux.</li><li>Phones and tablets: use the Android app on page 12.</li></ul></div>
+  </div>
+  <div class="card" style="margin-top:7mm">
+    <h3>The "Windows protected your PC" message</h3>
+    <p>The first time you open the setup file, Windows may show a blue box saying <b>Windows protected your PC</b>. This appears for any app that isn't signed with a paid certificate; it doesn't mean anything is wrong.</p>
+    <p>Click <span class="btn">More info</span>, then <span class="btn">Run anyway</span>. Your antivirus may also ask; choose to allow it.</p>
+  </div>
+  <div class="note"><b>Got the installer in pieces?</b> If you received files ending in <b>.001, .002…</b>, put them all in one folder and double-click <b>Make Setup.exe</b>. It joins them into the single setup file and checks it isn't damaged.</div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>3</span></div>
+</section>
+
+<!-- 4 · Install -->
+<section class="page">
+  <div class="kicker">02 · Installing</div>
+  <h2>Install in under a minute</h2>
+  <div class="grid2" style="grid-template-columns:1.05fr .95fr; align-items:start">
+    <div>
+      <img class="shot" src="jpg/inst-welcome.jpg" alt="">
+      <p class="cap">The installer. Designs scroll by on the left while you choose your options.</p>
+      <img class="shot" src="jpg/inst-working.jpg" alt="" style="margin-top:5mm">
+      <p class="cap">Installing. It checks the file isn't damaged, then sets everything up.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div><h3>Open the setup file</h3><p>Double-click <b>Inspired Moodboard V.1 Setup.exe</b>. If Windows asks, choose <b>More info → Run anyway</b>.</p></div></div>
+      <div class="step"><div><h3>Choose your options</h3><p><b>Install to</b> shows where the app goes; leave it as it is unless you want it elsewhere (<span class="btn">Change</span>). Tick <b>Add a Desktop shortcut</b> and <b>Open it when it's done</b> if you want them.</p></div></div>
+      <div class="step"><div><h3>Click Install</h3><p>Watch the percentage climb. There are tips while you wait. It usually takes under a minute.</p></div></div>
+      <div class="step"><div><h3>You're all set</h3><p>Inspired Moodboard is now on your <b>Desktop</b> and in the <b>Start menu</b>, and opens straight away if you ticked that box.</p></div></div>
+      <div class="note" style="margin-top:1mm"><b>Updating?</b> Run a newer setup file over an existing install. The button says <span class="btn">Update Inspired Moodboard</span> and your boards are kept.</div>
+    </div>
+  </div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>4</span></div>
+</section>
+
+<!-- 5 · First board -->
+<section class="page">
+  <div class="kicker">03 · Your first board</div>
+  <h2>Open a board</h2>
+  <p class="lead">The first time Inspired Moodboard opens, it asks for a folder. After that it always reopens the board you used last.</p>
+  <img class="shot" src="jpg/app-empty.jpg" alt="">
+  <p class="cap">The welcome screen, listing collections saved with the Inspired Pin Saver extension.</p>
+  <div class="grid3" style="margin-top:6mm">
+    <div class="card"><h3>From Pin Saver</h3><p>Collections you save with the <b>Inspired Pin Saver</b> Chrome extension (in <b>Downloads\Pinterest</b>) are listed on the left. Click one to open it.</p></div>
+    <div class="card"><h3>Any folder</h3><p>Click <span class="btn red">Open folder</span> and pick any folder of images: client references, a shoot, an old project. Press <span class="kbd">Ctrl</span> <span class="kbd">O</span> anytime.</p></div>
+    <div class="card"><h3>Drag and drop</h3><p>Drag a folder from File Explorer onto the window. Folders you've opened before are listed under <b>Recent</b>.</p></div>
+  </div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>5</span></div>
+</section>
+
+<!-- 6 · Tour -->
+<section class="page">
+  <div class="kicker">04 · A tour</div>
+  <h2>Around the board</h2>
+  <div class="anno">
+    <img class="shot" src="jpg/app-masonry.jpg" alt="">
+    <span class="mark" style="left:20%;top:18.5%">1</span>
+    <span class="mark" style="left:23.5%;top:2.2%">2</span>
+    <span class="mark" style="left:76.5%;top:2.2%">3</span>
+    <span class="mark" style="left:58%;top:42%">4</span>
+    <span class="mark" style="left:37.3%;top:95.3%">5</span>
+    <span class="mark" style="left:7.6%;top:56%">6</span>
+  </div>
+  <div class="legend">
+    <div><i>1</i><span><b>Collections</b>Your Pin Saver collections. Click one to switch boards. Hide this side with the button at the top left.</span></div>
+    <div><i>2</i><span><b>Board name</b>The folder you're looking at and how many images it has.</span></div>
+    <div><i>3</i><span><b>Float and On top</b>Keep the board over your design app, see-through or as a small corner window (page 9).</span></div>
+    <div><i>4</i><span><b>The board</b>Every image in the folder. Scroll to zoom, drag empty space to move around, click an image to open it.</span></div>
+    <div><i>5</i><span><b>Toolbar</b>Arrange modes, Fit, the zoom level, the board's Colours, and Export to save the whole board as one PNG.</span></div>
+    <div><i>6</i><span><b>Recent</b>Other folders you've opened, one click away.</span></div>
+  </div>
+  <div class="note"><b>It keeps itself up to date.</b> While a board is open, any new image saved into that folder appears on the board on its own. Your layout is remembered in the folder, in a small hidden file called <b>.inspired-board.json</b>.</div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>6</span></div>
+</section>
+
+<!-- 7 · Arrange -->
+<section class="page">
+  <div class="kicker">05 · Arrange</div>
+  <h2>Four ways to arrange a board</h2>
+  <p class="lead" style="margin-bottom:5mm">Switch with the toolbar at the bottom, or press <span class="kbd">1</span> <span class="kbd">2</span> <span class="kbd">3</span> <span class="kbd">4</span>.</p>
+  <div class="grid2" style="row-gap:5mm">
+    <div><img class="shot" src="jpg/app-masonry.jpg" alt=""><h3 style="margin-top:3mm">1 · Masonry</h3><p>A neat Pinterest-style grid in saved order. The best everyday view.</p></div>
+    <div><img class="shot" src="jpg/app-colour.jpg" alt=""><h3 style="margin-top:3mm">2 · By colour</h3><p>Sorted into a colour flow, from reds round to blues, with neutrals at the end. Great for finding a palette.</p></div>
+    <div><img class="shot" src="jpg/app-mosaic.jpg" alt=""><h3 style="margin-top:3mm">3 · Mosaic</h3><p>Your <b>featured</b> images show big and everything else fits around them. To feature one, click it and press <span class="btn">Feature</span> (or <span class="kbd">S</span>).</p></div>
+    <div class="card" style="align-self:stretch"><h3>4 · Free</h3><p>Move images anywhere you like, the way you'd pin prints to a wall. Dragging any image switches to Free on its own.</p><p>Inspired Moodboard remembers where everything goes, so the board looks the same next time.</p><p style="margin-top:4mm"><b>Fit</b> (<span class="kbd">F</span>) shows the whole board again. Double-click empty space does the same.</p></div>
+  </div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>7</span></div>
+</section>
+
+<!-- 8 · A design -->
+<section class="page">
+  <div class="kicker">06 · One design</div>
+  <h2>Working with a design</h2>
+  <img class="shot" src="jpg/app-info.jpg" alt="">
+  <p class="cap">Click any image to open it in the side panel on the right.</p>
+  <div class="grid2" style="margin-top:6mm">
+    <div class="card"><h3>Use it in your design</h3>
+      <ul class="clean">
+        <li><b>Drag</b> the big picture from the side panel into Photoshop, Figma or Canva.</li>
+        <li>Or hold <span class="kbd">Ctrl</span> and drag any image straight off the board.</li>
+        <li><span class="btn">Copy image</span> (or <span class="kbd">Ctrl</span> <span class="kbd">C</span>), then paste with <span class="kbd">Ctrl</span> <span class="kbd">V</span> in any app.</li>
+      </ul></div>
+    <div class="card"><h3>Everything about it</h3>
+      <ul class="clean">
+        <li><b>Colour swatches</b>: click one to copy its hex code.</li>
+        <li><span class="btn">Feature</span> makes it show big in Mosaic. <span class="btn">Show in folder</span> opens it in File Explorer. <span class="btn">Open pin</span> goes back to Pinterest.</li>
+        <li>If you made an <b>AI pack</b> with Inspired Pin Saver, the image prompt, copy and shot breakdown appear here with <span class="btn">Copy</span> buttons.</li>
+      </ul></div>
+  </div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>8</span></div>
+</section>
+
+<!-- 9 · While you design -->
+<section class="page">
+  <div class="kicker">07 · While you design</div>
+  <h2>Keep it beside your work</h2>
+  <div class="grid2" style="grid-template-columns:1.25fr .75fr; align-items:start">
+    <div>
+      <img class="shot" src="jpg/app-ontop.jpg" alt="">
+      <h3 style="margin-top:4mm">On top + See-through</h3>
+      <p>Click <span class="btn red">On top</span> (or press <span class="kbd">T</span>) and the board stays above Photoshop, Figma or Canva. Hover the button to get the <b>See-through</b> slider, so you can see your design behind the board.</p>
+      <img class="shot" src="jpg/app-palette.jpg" alt="" style="margin-top:5mm">
+      <h3 style="margin-top:4mm">Board colours &amp; Export</h3>
+      <p><span class="btn">Colours</span> shows the main colours of the whole board; click one to copy its hex. <span class="btn">Export</span> saves the whole board as one PNG, ready to send to a client.</p>
+    </div>
+    <div>
+      <img class="shot" src="jpg/app-float.jpg" alt="">
+      <h3 style="margin-top:4mm">Float</h3>
+      <p>Click <span class="btn">Float</span> (or <span class="kbd">Ctrl</span> <span class="kbd">Shift</span> <span class="kbd">F</span>) to shrink the board into a small window in the corner that stays on top. Click Float again to go back.</p>
+      <div class="note">Tip: Float + See-through at about 70% works well for matching a reference while you design.</div>
+    </div>
+  </div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>9</span></div>
+</section>
+
+<!-- 10 · Shortcuts -->
+<section class="page">
+  <div class="kicker">08 · Shortcuts</div>
+  <h2>Moving around &amp; shortcuts</h2>
+  <div class="grid2" style="align-items:start">
+    <div class="card"><h3>Moving around the board</h3>
+      <table class="tl">
+        <tr><td>Zoom</td><td>Scroll the mouse wheel</td></tr>
+        <tr><td>Move the board</td><td>Drag empty space</td></tr>
+        <tr><td>Zoom to an image</td><td>Double-click it</td></tr>
+        <tr><td>See everything</td><td>Double-click empty space, or <span class="kbd">F</span></td></tr>
+        <tr><td>Open an image</td><td>Click it</td></tr>
+        <tr><td>Close the side panel</td><td><span class="kbd">Esc</span></td></tr>
+      </table></div>
+    <div class="card"><h3>Keyboard shortcuts</h3>
+      <table>
+        <tr><td><span class="kbd">Ctrl</span> <span class="kbd">O</span></td><td>Open a folder</td></tr>
+        <tr><td><span class="kbd">1</span> <span class="kbd">2</span> <span class="kbd">3</span> <span class="kbd">4</span></td><td>Masonry · By colour · Mosaic · Free</td></tr>
+        <tr><td><span class="kbd">F</span></td><td>Fit the whole board</td></tr>
+        <tr><td><span class="kbd">T</span></td><td>Keep on top</td></tr>
+        <tr><td><span class="kbd">Ctrl</span> <span class="kbd">Shift</span> <span class="kbd">F</span></td><td>Float</td></tr>
+        <tr><td><span class="kbd">S</span></td><td>Feature the selected image</td></tr>
+        <tr><td><span class="kbd">Ctrl</span> <span class="kbd">C</span></td><td>Copy the selected image</td></tr>
+        <tr><td><span class="kbd">Ctrl</span> + drag</td><td>Drag an image into another app</td></tr>
+      </table></div>
+  </div>
+  <div class="card" style="margin-top:7mm"><h3>Good to know</h3>
+    <ul class="clean">
+      <li>Inspired Moodboard <b>never changes or deletes your images</b>. It only reads them.</li>
+      <li>Your layout, featured images and arrange mode are saved in each folder, so a board looks the same next time, even after reinstalling.</li>
+      <li>It works fully offline. Nothing is uploaded anywhere.</li>
+      <li>Any folder of JPG, PNG, WEBP, GIF or BMP images works, including subfolders.</li>
+    </ul></div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>10</span></div>
+</section>
+
+<!-- 11 · Uninstall + troubleshooting -->
+<section class="page">
+  <div class="kicker">09 · Uninstall &amp; help</div>
+  <h2>Uninstalling</h2>
+  <div class="grid2" style="grid-template-columns:.9fr 1.1fr; align-items:start">
+    <div><img class="shot" src="jpg/inst-unconfirm.jpg" alt=""><p class="cap">Removing it keeps your images, boards and Pinterest folders exactly where they are.</p></div>
+    <div class="card"><h3>Three ways to remove it</h3>
+      <ul class="clean">
+        <li><b>Settings → Apps → Installed apps</b>: find Inspired Moodboard, click <b>⋯</b> then <b>Uninstall</b>.</li>
+        <li><b>Start menu → Uninstall Inspired Moodboard</b>.</li>
+        <li>Run <b>Uninstall Inspired Moodboard.exe</b>. It finds the app wherever it's installed.</li>
+      </ul>
+      <p style="margin-top:3mm">Click <span class="btn">Remove</span>. The app, its shortcuts and its settings are removed.</p></div>
+  </div>
+  <h2 style="font-size:19pt; margin-top:7mm">If something goes wrong</h2>
+  <table class="card" style="padding:1mm 4mm">
+    <tr><td><b>"Windows protected your PC"</b></td><td>Normal for unsigned apps. Click <b>More info → Run anyway</b>.</td></tr>
+    <tr><td><b>Antivirus blocks it</b></td><td>Choose <b>Allow</b> or <b>Restore</b> in your antivirus, then run the setup file again.</td></tr>
+    <tr><td><b>"This Setup file is damaged"</b></td><td>The download or copy didn't finish. Get a fresh copy of the file and run it again.</td></tr>
+    <tr><td><b>Not enough space</b></td><td>Free up about 350&nbsp;MB on your C: drive, or click <b>Change</b> to install on another drive.</td></tr>
+    <tr><td><b>Setup closes with a message</b></td><td>The message names a log file. Send the file <b>Inspired Moodboard Setup.log</b> (in <b>%TEMP%</b>) to whoever gave you the app.</td></tr>
+    <tr><td><b>My collections aren't listed</b></td><td>The list shows folders in <b>Downloads\Pinterest</b>. For anything else, use <b>Open folder</b>.</td></tr>
+  </table>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>11</span></div>
+</section>
+
+<!-- 12 · Android -->
+<section class="page">
+  <div class="kicker">10 · On your phone</div>
+  <h2>Inspired for Android</h2>
+  <p class="lead">Save designs from Pinterest on your phone, see them on a moodboard, and send them to WhatsApp as a full-quality zip. Install <b>Inspired V.1 (Android).apk</b> on Android 7 or newer; if asked, allow <b>Install unknown apps</b>.</p>
+  <div class="phones">
+    <div><img src="jpg/11-pinterest-saved.jpg" alt=""><p class="cap"><b>1 · Save.</b> Tap <b>Open Pinterest</b> in the app. Every pin gets a red <b>Save</b>; tap it and the design downloads at full size.</p></div>
+    <div><img src="jpg/12-pinterest-forward.jpg" alt=""><p class="cap"><b>2 · Forward.</b> Tap the red <b>Forward</b> button: open them on your moodboard, or zip them and send to your WhatsApp number.</p></div>
+    <div><img src="jpg/2-board.jpg" alt=""><p class="cap"><b>3 · Your board.</b> New designs are marked on the board. View by colour, share, copy, float, or save the board as one picture.</p></div>
+  </div>
+  <div class="grid2" style="margin-top:6mm">
+    <div class="card"><h3>From the Pinterest app</h3><p>Open a pin, tap <b>Share</b>, then <b>Inspired</b>. Pick a moodboard and tap Save. You can forward it to WhatsApp right there.</p></div>
+    <div class="card"><h3>To your laptop</h3><p>Phone saves go to <b>Download/Pinterest</b>, in the same folder layout as on your computer. Copy that folder across and open it in Inspired Moodboard.</p></div>
+  </div>
+  <div class="foot"><b>Inspired Moodboard V.1 · Guide</b><span>12</span></div>
+</section>
+
+</body>
+</html>

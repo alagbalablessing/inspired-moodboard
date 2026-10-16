@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' board: data: blob:; connect-src 'self' board:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'" />
+  <title>Inspired Moodboard</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header class="titlebar">
+    <button id="sideToggle" class="tb-btn" type="button" title="Show or hide collections" aria-label="Collections">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="13" rx="2.5"/><path d="M7.5 3.5v13"/></svg>
+    </button>
+    <img class="logo" src="icon.png" alt="" />
+    <div class="title"><b id="boardName">Inspired Moodboard</b><span id="boardCount"></span></div>
+    <div class="tb-spacer"></div>
+    <div class="tb-group">
+      <button id="floatBtn" class="tb-btn" type="button" title="Float: small window that stays on top (Ctrl+Shift+F)" aria-pressed="false">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4" width="15" height="12" rx="2"/><rect x="10" y="9.5" width="6" height="5" rx="1" class="fill"/></svg>
+        <span>Float</span>
+      </button>
+      <div class="pinwrap">
+        <button id="topBtn" class="tb-btn" type="button" title="Keep on top of other apps (T)" aria-pressed="false">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 2.8h6l-1 4.6 2.6 2.8H5.4L8 7.4z"/><path d="M10 10.2V17.5"/></svg>
+          <span>On top</span>
+        </button>
+        <div class="pop" id="topPop">
+          <label>See-through <output id="opacityOut">100%</output></label>
+          <input id="opacity" type="range" min="30" max="100" step="5" value="100" />
+        </div>
+      </div>
+    </div>
+    <div class="tb-overlay-space"></div>
+  </header>
+
+  <aside class="side" id="side">
+    <button id="openBtn" class="primary wide" type="button">Open folder</button>
+    <div class="side-sec">
+      <h3>From Inspired Pin Saver</h3>
+      <div id="colList" class="col-list"></div>
+    </div>
+    <div class="side-sec">
+      <h3>Recent</h3>
+      <div id="recentList" class="recent-list"></div>
+    </div>
+  </aside>
+
+  <main class="stage" id="stage">
+    <div class="grid-bg" id="gridBg"></div>
+    <div class="world" id="world"></div>
+
+    <section class="empty" id="empty">
+      <div class="empty-inner">
+        <div class="stack-hero" aria-hidden="true"><i></i><i></i><i></i></div>
+        <h1>Turn a folder into a moodboard</h1>
+        <p>Open the folder your Pinterest saves go into, or any folder of images. Drop a folder anywhere in this window too.</p>
+        <button id="emptyOpen" class="primary big" type="button">Open folder</button>
+        <div id="emptyCols" class="empty-cols"></div>
+      </div>
+    </section>
+
+    <div class="palette" id="palette" hidden></div>
+
+    <nav class="toolbar" id="toolbar" hidden>
+      <div class="seg" id="modes" role="tablist" aria-label="Arrange">
+        <span class="seg-ind" aria-hidden="true"></span>
+        <button data-mode="masonry" role="tab" title="Masonry (1)">Masonry</button>
+        <button data-mode="colour" role="tab" title="Arrange by colour (2)">By colour</button>
+        <button data-mode="mosaic" role="tab" title="Mosaic: starred images big (3)">Mosaic</button>
+        <button data-mode="free" role="tab" title="Free: move anything (4)">Free</button>
+      </div>
+      <span class="sep"></span>
+      <button id="fitBtn" class="tool" type="button" title="Fit everything (F)">Fit</button>
+      <span id="zoomOut" class="zoom">100%</span>
+      <span class="sep"></span>
+      <button id="paletteBtn" class="tool" type="button" title="Board colours" aria-pressed="false">Colours</button>
+      <button id="exportBtn" class="tool" type="button" title="Save the board as one image">Export</button>
+    </nav>
+
+    <aside class="info" id="info" aria-hidden="true">
+      <button id="infoClose" class="x" type="button" aria-label="Close">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+      <div class="preview"><img id="infoImg" alt="" draggable="true" /></div>
+      <p class="hint">Drag the picture into Photoshop, Figma or Canva. On the board, hold Ctrl and drag.</p>
+      <h2 id="infoName"></h2>
+      <div class="swatches" id="infoSwatches"></div>
+      <div class="actions">
+        <button id="starBtn" class="ghost" type="button" aria-pressed="false">Feature</button>
+        <button id="copyImgBtn" class="ghost" type="button">Copy image</button>
+        <button id="showBtn" class="ghost" type="button">Show in folder</button>
+        <button id="linkBtn" class="ghost" type="button">Open pin</button>
+      </div>
+      <div id="notes" class="notes"></div>
+    </aside>
+
+    <div class="drop" id="drop"><div>Drop to open this folder</div></div>
+    <div class="toast" id="toast" role="status"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

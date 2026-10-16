@@ -1,0 +1,16 @@
+# build output (the installer is ~120 MB: attach it to a GitHub Release instead of committing it)
+dist/
+.build/
+*.exe
+payload.zip
+payload.sha256
+
+# Node / Electron (only if you run the app with npm)
+app/node_modules/
+app/package-lock.json
+
+# editors and system files
+.vscode/
+Thumbs.db
+desktop.ini
+.DS_Store

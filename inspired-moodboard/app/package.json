@@ -1,0 +1,14 @@
+{
+  "name": "inspired-moodboard",
+  "productName": "Inspired Moodboard",
+  "version": "1.0.0",
+  "description": "A desktop moodboard for your Pinterest saves. Floats over Photoshop, Figma and Canva.",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "38.8.6"
+  }
+}
